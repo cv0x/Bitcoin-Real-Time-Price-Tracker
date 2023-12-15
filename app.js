@@ -1,13 +1,21 @@
-let btc = new WebSocket('wss://stream.binance.com:9443/ws/btcbusd@trade')
-let btcPriceElement = document.getElementById('btc-price');
-let lastPrice = null;
+let btcPriceElement = document.getElementById("btc-price");
+let apiUrl =
+  "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd";
 
-
-btc.onmessage = (event) => {
-    let stockObject = JSON.parse(event.data);
-    let price = parseFloat(stockObject.p).toFixed(2);
-
-    btcPriceElement.innerText = price + ' $';
-
-    lastPrice = price;
+function fetchBtcPrice() {
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      let price = data.bitcoin.usd.toFixed(2);
+      btcPriceElement.innerText = price + " $";
+    })
+    .catch((error) => {
+      console.error("Error fetching BTC price:", error);
+    });
 }
+
+// Fetch BTC price initially
+fetchBtcPrice();
+
+// Update BTC price every 10 seconds
+setInterval(fetchBtcPrice, 10000);
