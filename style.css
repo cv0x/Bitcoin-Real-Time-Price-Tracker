@@ -1,87 +1,102 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(45deg, #03071e,#370617);
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(45deg, #03071e, #370617);
 }
-.card{
-    position: relative;
-    width: 400px;
-    height: 220px;
-    background: rgb(102, 98, 98);
-    border-radius: 25px;
-    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.30);
+.card {
+  position: relative;
+  width: 400px;
+  height: 220px;
+  background: rgb(102, 98, 98);
+  border-radius: 25px;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.3);
 }
-.btc-logo{
-    position: absolute;
-    left: 50%;
-    top: -50px;
-    transform: translateX(-50%);
-    width: 150px;
-    height: 150px;
-    border-radius: 75px;
-    background: rgb(102, 98, 98);
-    box-shadow: 0 35px 80px rgba(255, 255, 255, 0.30);
-    background-image: url('btc.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-
-}
-.graf{
-    position: absolute;
-    bottom: 0%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%; 
-    height: 100%;
-}
-button{
-    z-index: 1;
-    font-size: 50px;
-    width: 350px;
-    position: absolute;
-    left: 50%;
-    bottom: 5%;
-    transform: translateX(-50%);
-    background: transparent;
-    border: 0px solid #ffffff;
-    border-radius: 10px;
-
-}
-h3{
-    font-size: 15px;
-}
-.supp{
-    opacity: 80%;
-    top: 5px;
-    left: 5px;
-    position: absolute;
-    display: flex;
-    color: #525252;
-    transition: 0.5s;
-}
-.supp:hover{
-    opacity: 100%;
-    top: 7px;
-    color: transparent;
-    background-image: url('btcsupport.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-
-    width: 400px;
-    height: 200px;
-    transition: 0.5s;
+.btc-logo {
+  position: absolute;
+  z-index: 1;
+  left: 31%;
+  top: -50px;
+  transform: translate(-50%, -50px);
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  background: rgb(102, 98, 98);
+  box-shadow: 0 35px 80px rgba(255, 255, 255, 0.3);
+  background-image: url("btc.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: drop-shadow(0 0 4rem var(--main-color));
+  animation: floatImage 8s ease-in-out infinite;
 }
 
+@keyframes floatImage {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.8rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 
+.graf {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+}
+#btc-price {
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+}
+button {
+  z-index: 1;
+  font-size: 50px;
+  width: 350px;
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  transform: translateX(-50%);
+  background: transparent;
+  border: 0px solid #ffffff;
+  border-radius: 10px;
+}
+h3 {
+  font-size: 15px;
+}
+.supp {
+  opacity: 80%;
+  top: 5px;
+  left: 5px;
+  position: absolute;
+  display: flex;
+  color: #525252;
+  transition: 0.5s;
+}
+.supp:hover {
+  opacity: 100%;
+  top: 7px;
+  color: transparent;
+  background-image: url("https://raw.githubusercontent.com/cv0x/Bitcoin-Real-Time-Price-Tracker/main/btcsupport.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  width: 400px;
+  height: 200px;
+  transition: 0.5s;
+}
 
 /*  colors 03071e 370617 6a040f 9d0208 d00000 e85d04 f48c06 faa307*/

@@ -6,7 +6,7 @@ function fetchBtcPrice() {
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
-      let price = data.bitcoin.usd.toFixed(2);
+      let price = data.bitcoin.usd.toFixed(0);
       btcPriceElement.innerText = price + " $";
     })
     .catch((error) => {
