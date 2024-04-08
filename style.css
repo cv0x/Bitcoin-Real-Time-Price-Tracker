@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Anton", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -33,14 +33,13 @@ body {
   height: 150px;
   border-radius: 75px;
   background: rgb(102, 98, 98);
-  box-shadow: 0 35px 80px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.3);
   background-image: url("btc.png");
   background-repeat: no-repeat;
   background-size: contain;
   filter: drop-shadow(0 0 4rem var(--main-color));
-  animation: floatImage 8s ease-in-out infinite;
+  animation: floatImage 50s ease-in-out infinite;
 }
-
 @keyframes floatImage {
   0% {
     transform: translateY(0);
@@ -61,11 +60,56 @@ body {
   width: 100%;
   height: 100%;
 }
+button {
+  z-index: 1;
+  font-size: 50px;
+  width: 350px;
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  transform: translateX(-50%);
+  background: transparent;
+  border: 0px solid #ffffff;
+  border-radius: 10px;
+}
+h3 {
+  font-size: 15px;
+}
+.supp {
+  opacity: 80%;
+  top: 5px;
+  left: 5px;
+  position: absolute;
+  display: flex;
+  color: #525252;
+  transition: 0.5s;
+}
+.supp:hover {
+  opacity: 100%;
+  top: 7px;
+  color: transparent;
+  background-image: url("btcsupport.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  width: 400px;
+  height: 200px;
+  transition: 0.5s;
+}
+
+.graf {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+}
 #btc-price {
-  letter-spacing: 5px;
+  letter-spacing: 2px;
   position: absolute;
   z-index: 1;
-  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 button {
   z-index: 1;
