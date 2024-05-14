@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 :root {
+  --main-color: rgb(102, 98, 98);
   --shadow-color: #292929;
   --text-color: #000000;
   --logo-color: yellow;
@@ -26,15 +27,15 @@ body {
 }
 .card {
   position: relative;
+  z-index: 1;
   width: 400px;
   height: 220px;
-  background: rgb(102, 98, 98);
+  background: var(--main-color);
   border-radius: 25px;
   box-shadow: 0 35px 80px rgba(0, 0, 0, 0.3);
 }
 .card p {
   text-align: center;
-  z-index: 1;
   font-size: 50px;
   width: 350px;
   position: absolute;
@@ -44,22 +45,32 @@ body {
   border: 0;
   border-radius: 10px;
 }
-.btc-logo {
+#btc-logo {
   position: absolute;
-  z-index: 1;
-  left: 31%;
-  top: -50px;
-  width: 150px;
-  height: 150px;
-  border-radius: 75px;
-  background: var(--logo-color);
-  box-shadow: 0 0px 50px var(--logo-color);
-  background-image: url("btc.png");
-  background-repeat: no-repeat;
-  background-size: contain;
+  align-items: center;
+  transform: translateX(-50%);
+  z-index: 4;
+  left: 50%;
+  top: -80px;
+  font-size: 180px;
 }
+
+.btc-backgound {
+  position: absolute;
+  align-items: center;
+  transform: translateX(-50%);
+  z-index: 3;
+  left: 50%;
+  top: -60px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-color: var(--main-color);
+}
+
 .graf {
   position: absolute;
+  z-index: 2;
   bottom: 0%;
   left: 50%;
   transform: translateX(-50%);
@@ -70,9 +81,9 @@ body {
 }
 
 #btc-price {
+  z-index: 3;
   letter-spacing: 2px;
   position: absolute;
-  z-index: 1;
   color: var(--text-color);
   text-shadow: 0px 10px 20px rgba(102, 98, 98, 1);
 }

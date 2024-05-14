@@ -17,21 +17,26 @@ function fetchBtcPrice() {
 // Fetch BTC price initially
 fetchBtcPrice();
 
-// Update BTC price every 10 seconds
-setInterval(fetchBtcPrice, 10000);
+// Update BTC price every 1min
+setInterval(fetchBtcPrice, 60000);
 
 document.addEventListener("DOMContentLoaded", function () {
   const fontSelect = document.getElementById("font-family");
-  const fontShadow = document.getElementById("font-shadow");
+  const fontShadowSelect = document.getElementById("logo-shadow");
+  const targetDiv = document.querySelector(".btc-backgound");
   const saveButton = document.getElementById("save");
 
   // Function to save the selected font
   saveButton.addEventListener("click", function () {
     const selectedFont = fontSelect.value;
+    const selectedFontShadow = fontShadowSelect.value;
+
     document.body.style.fontFamily = selectedFont;
+    targetDiv.style.boxShadow = selectedFontShadow;
 
     //Store the selected font in memory
     localStorage.setItem("selectedFont", selectedFont);
+    localStorage.setItem("selectedFontShadow", selectedFontShadow);
   });
 
   //Load saved font on page load
@@ -41,10 +46,24 @@ document.addEventListener("DOMContentLoaded", function () {
     fontSelect.value = savedFont;
   }
 
+  const savedFontShadow = localStorage.getItem("selectedFontShadow");
+  if (savedFontShadow) {
+    targetDiv.style.boxShadow = `0 0 50px ${savedFontShadow}`;
+    fontShadowSelect.value = savedFontShadow;
+  }
+
   fontSelect.addEventListener("change", function () {
     const selectedFont = fontSelect.value;
-    //Set the selected font
     document.body.style.fontFamily = selectedFont;
+  });
+
+  fontShadowSelect.addEventListener("change", function () {
+    const selectedFontShadow = fontShadowSelect.value;
+    if (selectedFontShadow === "0") {
+      targetDiv.style.boxShadow = "none";
+    } else {
+      targetDiv.style.boxShadow = `0 0 50px ${selectedFontShadow}`;
+    }
   });
 
   //Toggle icon menu

@@ -10,7 +10,8 @@
 </head>
 <body>   
     <div class="card">
-    <div class="btc-logo"></div>
+<i class='bx bxl-bitcoin' id="btc-logo"></i>
+<div class="btc-backgound"></div>
     <p id="btc-price">Loading...</p>
     <img class="graf" alt="bitcoin (BTC) 7d chart" data-url="/en/coins/bitcoin?chart=7_days#panel" 
          data-action="click->application#navigateToUrl" src="https://www.coingecko.com/coins/1/sparkline.svg">
@@ -31,12 +32,17 @@
             <option value="monospace">Monospace</option>
         </select>
         </div>
-        <div id="font-shadow-menu">
-        <label for="font-shadow">Font Color:</label>
-        <select id="font-shadow">
+        <div id="logo-shadow-menu">
+        <label for="logo-shadow">Logo Shadow:</label>
+        <select id="logo-shadow">
             <option value="0">Off</option>
-            <option value="c-white">White</option>
-            <option value="c-interactive">Interactive</option>
+            <option value="gray">Gray</option>
+            <option value="white">White</option>
+            <option value="black">Black</option>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="yellow">Yellow</option>
         </select>
         </div>
         <div id="logo-color-menu">
