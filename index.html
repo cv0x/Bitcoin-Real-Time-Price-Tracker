@@ -5,18 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel ="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>BTC live price by cv0x</title>
 </head>
-<body>
-    
+<body>   
     <div class="card">
     <div class="btc-logo"></div>
-    <button id="btc-price">Loading...</button>
+    <p id="btc-price">Loading...</p>
     <img class="graf" alt="bitcoin (BTC) 7d chart" data-url="/en/coins/bitcoin?chart=7_days#panel" 
          data-action="click->application#navigateToUrl" src="https://www.coingecko.com/coins/1/sparkline.svg">
     </div>
-    <h3 class="supp" alt="BTC adress: 35HL9n7aSrMmetxJkcnPrWBKoSKbF2ToGS">Support Creator ❤</h3>
 
+<i class='bx bxs-cog' id="menu-icon" alt="Settings"></i></div>
+    <div class="menu">
+        <h2>Settings</h2>
+        <div id="font-settings-menu">
+        <label for="font-family">Font Family:</label>
+        <select id="font-family">
+            <option value="Poppins">Poppins</option>
+            <option value="Roboto">Roboto</option>
+            <option value="Playfair Display">Playfair</option>
+            <option value="Poetsen One">Poetsen</option>
+            <option value="cursive">Cursive</option>
+            <option value="sans-serif">Sans-serif</option>
+            <option value="monospace">Monospace</option>
+        </select>
+        </div>
+        <div id="font-shadow-menu">
+        <label for="font-shadow">Font Color:</label>
+        <select id="font-shadow">
+            <option value="0">Off</option>
+            <option value="c-white">White</option>
+            <option value="c-interactive">Interactive</option>
+        </select>
+        </div>
+        <div id="logo-color-menu">
+        <label for="logo-color">Logo Color:</label>
+        <select id="logo-color">
+            <option value="cl-gray">Gray</option>
+            <option value="cl-white">White</option>
+            <option value="cl-interactive">Interactive</option>
+        </select>
+        </div>
+        <i class='bx bx-save' id="save"></i>
+    
+        <h3>Support Creator ❤</h3>
+        <div class="supportMe" alt="BTC adress: 35HL9n7aSrMmetxJkcnPrWBKoSKbF2ToGS"></div>
+      </div>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
