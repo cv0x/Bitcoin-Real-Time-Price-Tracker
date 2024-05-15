@@ -1,5 +1,6 @@
 let btcPriceElement = document.getElementById("btc-price");
 let apiUrl = "https://api.coingecko.com/api/v3/coins/bitcoin";
+
 //Function for data acquisition
 async function getData() {
   try {
@@ -13,6 +14,17 @@ async function getData() {
 showData();
 // Update data every 1min
 setInterval(showData, 60000);
+
+// Function to refresh the image
+function refreshImage() {
+  var imageElement = document.getElementById("btc-image");
+  var imageUrl = imageElement.src;
+
+  // Adding a random parameter to the image URL ensures that the image is always reloaded
+  imageElement.src = imageUrl + "?timestamp=" + new Date().getTime();
+}
+// Update img every 1h
+setInterval(refreshImage, 3600000);
 
 // Functions for displaying data
 async function showData() {
