@@ -95,7 +95,6 @@ body {
   z-index: 3;
   letter-spacing: 2px;
   position: absolute;
-  color: var(--text-color);
   text-shadow: 0px 10px 20px rgba(102, 98, 98, 1);
 }
 
@@ -160,7 +159,7 @@ body {
   color: rgb(255, 255, 255);
   display: inline;
 }
-.menu p a{
+.menu p a {
   color: rgb(255, 255, 255);
 }
 
