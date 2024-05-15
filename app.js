@@ -1,42 +1,49 @@
+
 let btcPriceElement = document.getElementById("btc-price");
-let apiUrl =
-  "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd";
-
-function fetchBtcPrice() {
-  fetch(apiUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      let price = data.bitcoin.usd.toFixed(0);
-      btcPriceElement.innerText = price + " $";
-    })
-    .catch((error) => {
-      console.error("Error fetching BTC price:", error);
-    });
+let apiUrl = "https://api.coingecko.com/api/v3/coins/bitcoin";
+//Function for data acquisition
+async function getData() {
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log("Error fetching data:", error);
+  }
 }
+showData();
+// Update data every 1min
+setInterval(showData, 60000);
 
-// Fetch BTC price initially
-fetchBtcPrice();
-
-// Update BTC price every 1min
-setInterval(fetchBtcPrice, 60000);
+// Functions for displaying data
+async function showData() {
+  const data = await getData();
+  if (data) {
+    const currentPriceUSD = data.market_data.current_price.usd;
+    const priceChangePercentage7d = data.market_data.price_change_percentage_7d;
+    btcPriceElement.innerText = currentPriceUSD + " $";
+  }
+}
 
 document.addEventListener("DOMContentLoaded", function () {
   const fontSelect = document.getElementById("font-family");
-  const fontShadowSelect = document.getElementById("logo-shadow");
-  const targetDiv = document.querySelector(".btc-backgound");
+  const logoShadowSelect = document.getElementById("logo-shadow");
+  const divBackground = document.querySelector(".btc-backgound");
+  const divCard = document.querySelector(".card");
   const saveButton = document.getElementById("save");
 
   // Function to save the selected font
   saveButton.addEventListener("click", function () {
     const selectedFont = fontSelect.value;
-    const selectedFontShadow = fontShadowSelect.value;
+    const selectedLogoShadow = logoShadowSelect.value;
 
     document.body.style.fontFamily = selectedFont;
-    targetDiv.style.boxShadow = selectedFontShadow;
+    divBackground.style.boxShadow = selectedLogoShadow;
+    divCard.style.boxShadow = selectedLogoShadow;
 
     //Store the selected font in memory
     localStorage.setItem("selectedFont", selectedFont);
-    localStorage.setItem("selectedFontShadow", selectedFontShadow);
+    localStorage.setItem("selectedFontShadow", selectedLogoShadow);
   });
 
   //Load saved font on page load
@@ -44,25 +51,29 @@ document.addEventListener("DOMContentLoaded", function () {
   if (savedFont) {
     document.body.style.fontFamily = savedFont;
     fontSelect.value = savedFont;
+
+    fontSelect.addEventListener("change", function () {
+      const selectedFont = fontSelect.value;
+      document.body.style.fontFamily = selectedFont;
+    });
   }
 
-  const savedFontShadow = localStorage.getItem("selectedFontShadow");
-  if (savedFontShadow) {
-    targetDiv.style.boxShadow = `0 0 50px ${savedFontShadow}`;
-    fontShadowSelect.value = savedFontShadow;
+  const savedLogoShadow = localStorage.getItem("selectedFontShadow");
+  if (savedLogoShadow) {
+    divBackground.style.boxShadow = `0 0 20px ${savedLogoShadow}`;
+    divCard.style.boxShadow = `0 0 20px ${savedLogoShadow}`;
+
+    logoShadowSelect.value = savedLogoShadow;
   }
 
-  fontSelect.addEventListener("change", function () {
-    const selectedFont = fontSelect.value;
-    document.body.style.fontFamily = selectedFont;
-  });
-
-  fontShadowSelect.addEventListener("change", function () {
-    const selectedFontShadow = fontShadowSelect.value;
-    if (selectedFontShadow === "0") {
-      targetDiv.style.boxShadow = "none";
+  logoShadowSelect.addEventListener("change", function () {
+    const selectedLogoShadow = logoShadowSelect.value;
+    if (selectedLogoShadow === "0") {
+      divBackground.style.boxShadow = "none";
+      divCard.style.boxShadow = "none";
     } else {
-      targetDiv.style.boxShadow = `0 0 50px ${selectedFontShadow}`;
+      divBackground.style.boxShadow = `0 0 20px ${selectedLogoShadow}`;
+      divCard.style.boxShadow = `0 0 20px ${selectedLogoShadow}`;
     }
   });
 

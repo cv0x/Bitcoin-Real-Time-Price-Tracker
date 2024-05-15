@@ -32,7 +32,6 @@ body {
   height: 220px;
   background: var(--main-color);
   border-radius: 25px;
-  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.3);
 }
 .card p {
   text-align: center;
@@ -54,12 +53,24 @@ body {
   top: -80px;
   font-size: 180px;
 }
+.btc-backgound-color {
+  position: absolute;
+  align-items: center;
+  transform: translateX(-50%);
+  z-index: 0;
+  left: 50%;
+  top: -60px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-color: var(--main-color);
+}
 
 .btc-backgound {
   position: absolute;
   align-items: center;
   transform: translateX(-50%);
-  z-index: 3;
+  z-index: 1;
   left: 50%;
   top: -60px;
   width: 140px;
@@ -137,6 +148,22 @@ body {
   font-size: 15px;
   margin-top: 2px;
 }
+.menu p {
+  position: absolute;
+  padding-top: 15px;
+  text-align: center;
+  bottom: 2px;
+  right: 0px;
+  font-size: 12px;
+  height: 30px;
+  width: 150px;
+  color: rgb(255, 255, 255);
+  display: inline;
+}
+.menu p a{
+  color: rgb(255, 255, 255);
+}
+
 #save {
   position: absolute;
   top: 10px;
