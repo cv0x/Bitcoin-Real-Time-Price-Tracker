@@ -6,8 +6,8 @@
 :root {
   --main-color: rgb(102, 98, 98);
   --shadow-color: #292929;
-  --text-color: #000000;
-  --logo-color: yellow;
+  --text-color: #ffffff;
+  --logo-color: #ffd700;
 }
 
 * {
@@ -53,24 +53,12 @@ body {
   top: -80px;
   font-size: 180px;
 }
-.btc-backgound-color {
-  position: absolute;
-  align-items: center;
-  transform: translateX(-50%);
-  z-index: 0;
-  left: 50%;
-  top: -60px;
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background-color: var(--main-color);
-}
 
 .btc-backgound {
   position: absolute;
   align-items: center;
   transform: translateX(-50%);
-  z-index: 1;
+  z-index: 3;
   left: 50%;
   top: -60px;
   width: 140px;
@@ -120,8 +108,8 @@ body {
   margin-left: 10px;
   padding: 5px 1%;
   border-radius: 1rem;
-  color: rgb(255, 255, 255);
-  background: rgb(59, 59, 59);
+  color: var(--text-color);
+  background: var(--main-color);
   box-shadow: 0 0 10px black;
   display: none;
 }
@@ -156,11 +144,11 @@ body {
   font-size: 12px;
   height: 30px;
   width: 150px;
-  color: rgb(255, 255, 255);
+  color: var(--text-color);
   display: inline;
 }
 .menu p a {
-  color: rgb(255, 255, 255);
+  color: var(--text-color);
 }
 
 #save {
@@ -170,7 +158,7 @@ body {
   font-size: 40px;
   height: 45px;
   width: 45px;
-  color: rgb(255, 255, 255);
+  color: var(--text-color);
   display: block;
 }
 #save:hover {
