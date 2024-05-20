@@ -28,20 +28,23 @@ setInterval(refreshImage, 3600000);
 async function showData() {
   const data = await getData();
   if (data) {
+    //displaying the current price of btc
     const currentPriceUSD = data.market_data.current_price.usd;
     btcPriceElement.innerText = currentPriceUSD + " $";
-    const priceChangePercentage7d = data.market_data.price_change_percentage_7d;
-    btcPriceChangePercentage7dElement.innerText = priceChangePercentage7d;
 
-    //btc 99k - 110k ship to the moon
+    //displaying ship if price 99k - 110k
     if (currentPriceUSD >= 99000 && currentPriceUSD <= 110000) {
       document.querySelector(".tothemoon img").style.display = "block";
       document.querySelector(".btc-backgound").style.display = "none";
       document.querySelector("#btc-logo").style.display = "none";
     }
+    //displaying moon if price 100k - 110k
     if (currentPriceUSD >= 100000 && currentPriceUSD <= 110000) {
       document.querySelector(".moon img").style.display = "block";
     }
+    //stores data on whether btc is in the plus for the last 7 days
+    const priceChangePercentage7d = data.market_data.price_change_percentage_7d;
+    btcPriceChangePercentage7dElement.innerText = priceChangePercentage7d;
   }
 }
 showData();
