@@ -1,6 +1,8 @@
 let btcPriceElement = document.getElementById("btc-price");
 let apiUrl = "https://api.coingecko.com/api/v3/coins/bitcoin";
 
+let btcPriceChangePercentage7dElement;
+
 //Function for data acquisition
 async function getData() {
   try {
@@ -11,10 +13,6 @@ async function getData() {
     console.log("Error fetching data:", error);
   }
 }
-showData();
-// Update data every 1min
-setInterval(showData, 60000);
-
 // Function to refresh the image
 function refreshImage() {
   var imageElement = document.getElementById("btc-image");
@@ -31,8 +29,9 @@ async function showData() {
   const data = await getData();
   if (data) {
     const currentPriceUSD = data.market_data.current_price.usd;
-    const priceChangePercentage7d = data.market_data.price_change_percentage_7d;
     btcPriceElement.innerText = currentPriceUSD + " $";
+    const priceChangePercentage7d = data.market_data.price_change_percentage_7d;
+    btcPriceChangePercentage7dElement.innerText = priceChangePercentage7d;
 
     //btc 99k - 110k ship to the moon
     if (currentPriceUSD >= 99000 && currentPriceUSD <= 110000) {
@@ -45,6 +44,14 @@ async function showData() {
     }
   }
 }
+showData();
+// Update data every 1min
+setInterval(showData, 60000);
+
+//chang interactive color according price change percentage 7d
+const getInteractiveColor = () => {
+  return btcPriceChangePercentage7dElement > 0 ? "red" : "green";
+};
 
 document.addEventListener("DOMContentLoaded", function () {
   const fontSelect = document.getElementById("font-family");
@@ -89,15 +96,21 @@ document.addEventListener("DOMContentLoaded", function () {
   /* --- LOGO AND CARD SHADOW --- */
   //Load saved card and logo shadow on page
   const savedLogoShadow = localStorage.getItem("selectedFontShadow");
-  if (savedLogoShadow) {
+  if (savedLogoShadow === "interactive") {
+    divBackground.style.boxShadow = `0 0 20px ${getInteractiveColor()}`;
+    divCard.style.boxShadow = `0 0 20px ${getInteractiveColor()}`;
+  } else {
     divBackground.style.boxShadow = `0 0 20px ${savedLogoShadow}`;
     divCard.style.boxShadow = `0 0 20px ${savedLogoShadow}`;
-
-    logoShadowSelect.value = savedLogoShadow;
   }
+  logoShadowSelect.value = savedLogoShadow;
+
   //Displayed during selection
   logoShadowSelect.addEventListener("change", function () {
-    const selectedLogoShadow = logoShadowSelect.value;
+    const selectedLogoShadow =
+      logoShadowSelect.value === "interactive"
+        ? getInteractiveColor()
+        : logoShadowSelect.value;
     if (selectedLogoShadow === "0") {
       divBackground.style.boxShadow = "none";
       divCard.style.boxShadow = "none";
@@ -110,12 +123,18 @@ document.addEventListener("DOMContentLoaded", function () {
   /* --- PRICE COLOR --- */
   //Load saved price color on page
   priceColorSelect.addEventListener("change", function () {
-    const selectedPriceColor = priceColorSelect.value;
+    const selectedPriceColor =
+      priceColorSelect.value === "interactive"
+        ? getInteractiveColor()
+        : priceColorSelect.value;
     priceColorElement.style.color = selectedPriceColor;
   });
   // Retrieving the saved text color on page
   const savedPriceColor = localStorage.getItem("selectedPriceColor");
-  if (savedPriceColor) {
+  if (savedPriceColor === "interactive") {
+    priceColorElement.style.color = getInteractiveColor();
+    priceColorSelect.value = savedPriceColor;
+  } else {
     priceColorElement.style.color = savedPriceColor;
     priceColorSelect.value = savedPriceColor;
   }
