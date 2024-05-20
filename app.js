@@ -33,11 +33,15 @@ async function showData() {
     const currentPriceUSD = data.market_data.current_price.usd;
     const priceChangePercentage7d = data.market_data.price_change_percentage_7d;
     btcPriceElement.innerText = currentPriceUSD + " $";
-    //btc 100k background gold
-    if (currentPriceUSD > 1000000) {
-      document.querySelector(".btc-backgound-highlight").style.display =
-        "block";
+
+    //btc 99k - 110k ship to the moon
+    if (currentPriceUSD >= 99000 && currentPriceUSD <= 110000) {
+      document.querySelector(".tothemoon img").style.display = "block";
       document.querySelector(".btc-backgound").style.display = "none";
+      document.querySelector("#btc-logo").style.display = "none";
+    }
+    if (currentPriceUSD >= 100000 && currentPriceUSD <= 110000) {
+      document.querySelector(".moon img").style.display = "block";
     }
   }
 }
@@ -127,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
         : "none";
   });
 
-  // Check if the date is 22.05
+  // Check if the date is 22.05 (btc pizza day)
   const today = new Date();
   const day = today.getDate();
   const month = today.getMonth() + 1;

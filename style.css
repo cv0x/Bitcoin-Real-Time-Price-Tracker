@@ -10,7 +10,6 @@
   --btc-color: #000001;
   --btc-background-highlight: #ffd700;
 }
-
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +17,6 @@
   font-weight: 400;
   font-style: normal;
 }
-
 body {
   display: flex;
   justify-content: center;
@@ -56,18 +54,6 @@ body {
   font-size: 180px;
   display: block;
 }
-.pizzaday img {
-  position: absolute;
-  align-items: center;
-  transform: translateX(-50%);
-  z-index: 4;
-  top: -70px;
-  left: 50%;
-  width: 160px;
-  height: 160px;
-  display: none;
-}
-
 .btc-backgound {
   position: absolute;
   align-items: center;
@@ -81,21 +67,38 @@ body {
   background-color: var(--main-color);
   display: block;
 }
-
-.btc-backgound-highlight {
+.pizzaday img {
   position: absolute;
   align-items: center;
   transform: translateX(-50%);
-  z-index: 3;
+  z-index: 4;
+  top: -70px;
   left: 50%;
-  top: -60px;
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background-color: var(--btc-background-highlight);
+  width: 160px;
+  height: 160px;
   display: none;
 }
-
+.tothemoon img {
+  position: absolute;
+  align-items: center;
+  transform: translateX(-50%);
+  z-index: 4;
+  left: 50%;
+  top: -100px;
+  width: 250px;
+  height: 250px;
+  display: none;
+}
+.moon img {
+  position: absolute;
+  align-items: center;
+  z-index: 3;
+  right: -150px;
+  top: -330px;
+  width: 200px;
+  height: 200px;
+  display: none;
+}
 .graf {
   position: absolute;
   z-index: 2;
@@ -107,14 +110,12 @@ body {
   border-radius: 25px;
   border: 0;
 }
-
 #btc-price {
   z-index: 3;
   letter-spacing: 2px;
   position: absolute;
   text-shadow: 0px 10px 20px rgba(102, 98, 98, 1);
 }
-
 #menu-icon {
   position: absolute;
   top: 5px;
@@ -179,7 +180,6 @@ body {
 .menu p a {
   color: var(--text-color);
 }
-
 #save {
   position: absolute;
   top: 10px;
@@ -198,10 +198,8 @@ body {
   display: block;
   margin-top: 5px;
   height: 200px;
-
   background-image: url(https://raw.githubusercontent.com/cv0x/Bitcoin-Real-Time-Price-Tracker/main/btcsupport.png);
   background-repeat: no-repeat;
   background-size: contain;
 }
-
 /*  colors 03071e 370617 6a040f 9d0208 d00000 e85d04 f48c06 faa307*/
