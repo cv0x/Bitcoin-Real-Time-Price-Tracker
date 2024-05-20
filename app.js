@@ -33,6 +33,12 @@ async function showData() {
     const currentPriceUSD = data.market_data.current_price.usd;
     const priceChangePercentage7d = data.market_data.price_change_percentage_7d;
     btcPriceElement.innerText = currentPriceUSD + " $";
+    //btc 100k background gold
+    if (currentPriceUSD > 1000000) {
+      document.querySelector(".btc-backgound-highlight").style.display =
+        "block";
+      document.querySelector(".btc-backgound").style.display = "none";
+    }
   }
 }
 
@@ -120,4 +126,14 @@ document.addEventListener("DOMContentLoaded", function () {
         ? "block"
         : "none";
   });
+
+  // Check if the date is 22.05
+  const today = new Date();
+  const day = today.getDate();
+  const month = today.getMonth() + 1;
+
+  if (day === 22 && month === 5) {
+    document.querySelector(".pizzaday img").style.display = "block";
+    document.querySelector("#btc-logo").style.display = "none";
+  }
 });
