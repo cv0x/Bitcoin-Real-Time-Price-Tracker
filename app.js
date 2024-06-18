@@ -1,4 +1,6 @@
+//rev: why is vaalue set to "document.getElementById("btc-price")"? is it not always null? Create an empty variable like btcPriceChangePercentage7dElement and group it together
 let btcPriceElement = document.getElementById("btc-price");
+//rev: change type to constant and use name convention for constants- API_URL = "..."
 let apiUrl = "https://api.coingecko.com/api/v3/coins/bitcoin";
 
 let btcPriceChangePercentage7dElement;
@@ -7,6 +9,7 @@ let btcPriceChangePercentage7dElement;
 async function getData() {
   try {
     const response = await fetch(apiUrl);
+    //rev: thic part is pointless. just return data.json() and why is there await?
     const data = await response.json();
     return data;
   } catch (error) {
@@ -16,11 +19,15 @@ async function getData() {
 // Function to refresh the image
 function refreshImage() {
   var imageElement = document.getElementById("btc-image");
+  //rev: useless code
   var imageUrl = imageElement.src;
 
   // Adding a random parameter to the image URL ensures that the image is always reloaded
+  //rev: imageElement.src = `${imageElement.src}?timestamp=${new Date().getTime()}`;
   imageElement.src = imageUrl + "?timestamp=" + new Date().getTime();
 }
+
+//rev: why is here a random code between function declerations? group the code that is not a function together
 // Update img every 1h
 setInterval(refreshImage, 3600000);
 
@@ -47,6 +54,8 @@ async function showData() {
     btcPriceChangePercentage7dElement = priceChangePercentage7d;
   }
 }
+
+//rev: why is here a random code between function declerations? group the code that is not a function together
 showData();
 // Update data every 1min
 setInterval(showData, 60000);
@@ -55,6 +64,47 @@ setInterval(showData, 60000);
 const getInteractiveColor = () => {
   return btcPriceChangePercentage7dElement > 0 ? "green" : "red";
 };
+
+//rev: you dont need to do everything inside this content loaded event, only fetch the references and save them somewhere
+//rev: maybe you can have an object with all values which gets set here and then calls a function to set the events
+//rev: example:
+const dataFromDocument = {}
+
+document.addEventListener("DOMContentLoaded", function () {
+  dataFromDocument.fontSelect = document.getElementById("font-family");
+  dataFromDocument.logoShadowSelect = document.getElementById("logo-shadow");
+  dataFromDocument.priceColorElement = document.querySelector("#btc-price");
+  dataFromDocument.priceColorSelect = document.getElementById("price-color");
+  dataFromDocument.divBackground = document.querySelector(".btc-backgound");
+  dataFromDocument.divCard = document.querySelector(".card");
+  dataFromDocument.saveButton = document.getElementById("save");
+
+  updateDocumentEvents()
+})
+
+const updateDocumentEvents = () => {
+  dataFromDocument.saveButton.addEventListener("click", function () {
+    const selectedFont = dataFromDocument.fontSelect.value;
+    const selectedLogoShadow = dataFromDocument.logoShadowSelect.value;
+    const selectedPriceColor = dataFromDocument.priceColorSelect.value;
+
+    //Set style for the elements
+    document.body.style.fontFamily = selectedFont;
+    divBackground.style.boxShadow = selectedLogoShadow;
+    divCard.style.boxShadow = selectedLogoShadow;
+    priceColorElement.style.color = selectedPriceColor;
+
+    //Store the selected font in memory
+    localStorage.setItem("selectedFont", selectedFont);
+    localStorage.setItem("selectedFontShadow", selectedLogoShadow);
+    localStorage.setItem("selectedPriceColor", selectedPriceColor);
+  });
+  //...
+  //...
+}
+//
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const fontSelect = document.getElementById("font-family");
