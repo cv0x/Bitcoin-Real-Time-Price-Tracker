@@ -1,165 +1,177 @@
 let btcPriceElement = document.getElementById("btc-price");
 let apiUrl = "https://api.coingecko.com/api/v3/coins/bitcoin";
 
-let btcPriceChangePercentage7dElement;
-
-//Function for data acquisition
-async function getData() {
-  try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.log("Error fetching data:", error);
-  }
-}
-// Function to refresh the image
-function refreshImage() {
-  var imageElement = document.getElementById("btc-image");
-  var imageUrl = imageElement.src;
-
-  // Adding a random parameter to the image URL ensures that the image is always reloaded
-  imageElement.src = imageUrl + "?timestamp=" + new Date().getTime();
-}
-// Update img every 1h
-setInterval(refreshImage, 3600000);
-
-// Functions for displaying data
-async function showData() {
-  const data = await getData();
-  if (data) {
-    //displaying the current price of btc
-    const currentPriceUSD = data.market_data.current_price.usd;
-    btcPriceElement.innerText = currentPriceUSD + " $";
-
-    //displaying ship if price 99k - 110k
-    if (currentPriceUSD >= 99000 && currentPriceUSD <= 110000) {
-      document.querySelector(".tothemoon img").style.display = "block";
-      document.querySelector(".btc-backgound").style.display = "none";
-      document.querySelector("#btc-logo").style.display = "none";
-    }
-    //displaying moon if price 100k - 110k
-    if (currentPriceUSD >= 100000 && currentPriceUSD <= 110000) {
-      document.querySelector(".moon img").style.display = "block";
-    }
-    //stores data on whether btc is in the plus for the last 7 days
-    const priceChangePercentage7d = data.market_data.price_change_percentage_7d;
-    btcPriceChangePercentage7dElement = priceChangePercentage7d;
-  }
-}
-showData();
-// Update data every 1min
-setInterval(showData, 60000);
-
-//chang interactive color according price change percentage 7d
-const getInteractiveColor = () => {
-  return btcPriceChangePercentage7dElement > 0 ? "green" : "red";
+// Cache DOM elements
+const elements = {
+  priceColorSelect: document.getElementById("price-color"),
+  logoShadowSelect: document.getElementById("logo-shadow"),
+  divBackground: document.querySelector(".btc-backgound"),
+  divCard: document.querySelector(".card"),
+  priceElement: document.querySelector("#btc-price"),
+  fontSelect: document.getElementById("font-family"),
+  menuIcon: document.getElementById("menu-icon"),
+  menu: document.querySelector(".menu"),
+  toTheMoon: document.querySelector(".tothemoon img"),
+  moon: document.querySelector(".moon img"),
+  btcLogo: document.querySelector("#btc-logo"),
+  pizzaDay: document.querySelector(".pizzaday img"),
 };
 
-document.addEventListener("DOMContentLoaded", function () {
-  const fontSelect = document.getElementById("font-family");
-  const logoShadowSelect = document.getElementById("logo-shadow");
-  const priceColorElement = document.querySelector("#btc-price");
-  const priceColorSelect = document.getElementById("price-color");
-  const divBackground = document.querySelector(".btc-backgound");
-  const divCard = document.querySelector(".card");
-  const saveButton = document.getElementById("save");
+// Status management
+let currentTrendColor = null;
 
-  // Function to save the selected font,shadow,color
-  saveButton.addEventListener("click", function () {
-    const selectedFont = fontSelect.value;
-    const selectedLogoShadow = logoShadowSelect.value;
-    const selectedPriceColor = priceColorSelect.value;
+const DataManager = {
+  async fetchData() {
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      const trend = data.market_data.price_change_percentage_7d;
 
-    //Set style for the elements
-    document.body.style.fontFamily = selectedFont;
-    divBackground.style.boxShadow = selectedLogoShadow;
-    divCard.style.boxShadow = selectedLogoShadow;
-    priceColorElement.style.color = selectedPriceColor;
+      // Update and save trend color
+      currentTrendColor = trend > 0 ? "#00ff00" : "#ff0000";
+      localStorage.setItem("currentTrendColor", currentTrendColor);
 
-    //Store the selected font in memory
-    localStorage.setItem("selectedFont", selectedFont);
-    localStorage.setItem("selectedFontShadow", selectedLogoShadow);
-    localStorage.setItem("selectedPriceColor", selectedPriceColor);
-  });
-
-  /* --- FONT FAMILY --- */
-  //Load saved font on page load
-  const savedFont = localStorage.getItem("selectedFont");
-  if (savedFont) {
-    document.body.style.fontFamily = savedFont;
-    fontSelect.value = savedFont;
-
-    fontSelect.addEventListener("change", function () {
-      const selectedFont = fontSelect.value;
-      document.body.style.fontFamily = selectedFont;
-    });
-  }
-
-  /* --- LOGO AND CARD SHADOW --- */
-  //Load saved card and logo shadow on page
-  const savedLogoShadow = localStorage.getItem("selectedFontShadow");
-  if (savedLogoShadow === "interactive") {
-    divBackground.style.boxShadow = `0 0 20px ${getInteractiveColor()}`;
-    divCard.style.boxShadow = `0 0 20px ${getInteractiveColor()}`;
-  } else {
-    divBackground.style.boxShadow = `0 0 20px ${savedLogoShadow}`;
-    divCard.style.boxShadow = `0 0 20px ${savedLogoShadow}`;
-  }
-  logoShadowSelect.value = savedLogoShadow;
-
-  //Displayed during selection
-  logoShadowSelect.addEventListener("change", function () {
-    const selectedLogoShadow =
-      logoShadowSelect.value === "interactive"
-        ? getInteractiveColor()
-        : logoShadowSelect.value;
-    if (selectedLogoShadow === "0") {
-      divBackground.style.boxShadow = "none";
-      divCard.style.boxShadow = "none";
-    } else {
-      divBackground.style.boxShadow = `0 0 20px ${selectedLogoShadow}`;
-      divCard.style.boxShadow = `0 0 20px ${selectedLogoShadow}`;
+      return {
+        price: data.market_data.current_price.usd,
+        change7d: trend,
+      };
+    } catch (error) {
+      console.error("Chyba při načítání dat:", error);
+      return null;
     }
-  });
+  },
+};
 
-  /* --- PRICE COLOR --- */
-  //Load saved price color on page
-  priceColorSelect.addEventListener("change", function () {
-    const selectedPriceColor =
-      priceColorSelect.value === "interactive"
-        ? getInteractiveColor()
-        : priceColorSelect.value;
-    priceColorElement.style.color = selectedPriceColor;
-  });
-  // Retrieving the saved text color on page
-  const savedPriceColor = localStorage.getItem("selectedPriceColor");
-  if (savedPriceColor === "interactive") {
-    priceColorElement.style.color = getInteractiveColor();
-    priceColorSelect.value = savedPriceColor;
-  } else {
-    priceColorElement.style.color = savedPriceColor;
-    priceColorSelect.value = savedPriceColor;
-  }
+const StyleManager = {
+  applyInteractiveStyles() {
+    const storedColor =
+      localStorage.getItem("currentTrendColor") || currentTrendColor;
 
-  //Toggle icon menu
-  const menuIcon = document.getElementById("menu-icon");
-  const menu = document.querySelector(".menu");
+    if (elements.priceColorSelect.value === "interactive") {
+      elements.priceElement.style.color = storedColor;
+    }
 
-  menuIcon.addEventListener("click", function () {
-    menu.style.display =
-      menu.style.display === "none" || menu.style.display === ""
-        ? "block"
-        : "none";
-  });
+    if (elements.logoShadowSelect.value === "interactive") {
+      elements.divBackground.style.boxShadow = `0 0 20px ${storedColor}`;
+      elements.divCard.style.boxShadow = `0 0 20px ${storedColor}`;
+    }
+  },
 
-  // Check if the date is 22.05 (btc pizza day)
-  const today = new Date();
-  const day = today.getDate();
-  const month = today.getMonth() + 1;
+  updateUI(price) {
+    elements.priceElement.textContent = `${price.toLocaleString()} $`;
+    this.handleSpecialEffects(price);
+  },
 
-  if (day === 22 && month === 5) {
-    document.querySelector(".pizzaday img").style.display = "block";
-    document.querySelector("#btc-logo").style.display = "none";
-  }
+  handleSpecialEffects(price) {
+    const showRocket = price >= 99000 && price <= 110000;
+    elements.toTheMoon.style.display = showRocket ? "block" : "none";
+    elements.moon.style.display = price >= 100000 ? "block" : "none";
+    elements.divBackground.style.display = showRocket ? "none" : "block";
+    elements.btcLogo.style.display = showRocket ? "none" : "block";
+  },
+};
+
+const SettingsManager = {
+  async init() {
+    await this.loadSettings();
+    this.setupEventListeners();
+    this.checkPizzaDay();
+    StyleManager.applyInteractiveStyles();
+  },
+
+  async loadSettings() {
+    // Wait for initial data load
+    await DataManager.fetchData();
+
+    // Load user preferences
+    document.body.style.fontFamily =
+      localStorage.getItem("selectedFont") || "Arial";
+    elements.fontSelect.value = localStorage.getItem("selectedFont") || "Arial";
+
+    elements.priceColorSelect.value =
+      localStorage.getItem("selectedPriceColor") || "black";
+    elements.logoShadowSelect.value =
+      localStorage.getItem("selectedFontShadow") || "none";
+  },
+
+  setupEventListeners() {
+    document.getElementById("save").addEventListener("click", () => {
+      // Save user preferences
+      localStorage.setItem("selectedFont", elements.fontSelect.value);
+      localStorage.setItem(
+        "selectedFontShadow",
+        elements.logoShadowSelect.value
+      );
+      localStorage.setItem(
+        "selectedPriceColor",
+        elements.priceColorSelect.value
+      );
+
+      // Force style re-application
+      StyleManager.applyInteractiveStyles();
+    });
+
+    elements.fontSelect.addEventListener("change", () => {
+      document.body.style.fontFamily = elements.fontSelect.value;
+    });
+
+    elements.logoShadowSelect.addEventListener("change", () => {
+      if (elements.logoShadowSelect.value === "interactive") {
+        StyleManager.applyInteractiveStyles();
+      } else {
+        elements.divBackground.style.boxShadow =
+          elements.logoShadowSelect.value;
+        elements.divCard.style.boxShadow = elements.logoShadowSelect.value;
+      }
+    });
+
+    elements.priceColorSelect.addEventListener("change", () => {
+      if (elements.priceColorSelect.value === "interactive") {
+        StyleManager.applyInteractiveStyles();
+      } else {
+        elements.priceElement.style.color = elements.priceColorSelect.value;
+      }
+    });
+
+    elements.menuIcon.addEventListener("click", () => {
+      elements.menu.style.display =
+        elements.menu.style.display === "none" ? "block" : "none";
+    });
+  },
+
+  checkPizzaDay() {
+    const today = new Date();
+    if (today.getDate() === 22 && today.getMonth() === 4) {
+      elements.pizzaDay.style.display = "block";
+      elements.btcLogo.style.display = "none";
+    }
+  },
+};
+
+const App = {
+  async initialize() {
+    // 1. Initial data load
+    const initialData = await DataManager.fetchData();
+    if (!initialData) return;
+
+    // 2. Update UI with fresh data
+    StyleManager.updateUI(initialData.price);
+
+    // 3. Initialize settings AFTER data is loaded
+    await SettingsManager.init();
+
+    // 4. Set up periodic updates
+    setInterval(async () => {
+      const newData = await DataManager.fetchData();
+      if (newData) {
+        StyleManager.updateUI(newData.price);
+        StyleManager.applyInteractiveStyles();
+      }
+    }, 60000);
+  },
+};
+
+// Start application
+document.addEventListener("DOMContentLoaded", () => {
+  App.initialize();
 });
