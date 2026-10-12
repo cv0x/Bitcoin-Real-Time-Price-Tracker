@@ -1,5 +1,5 @@
-# Bitcoin Price Tracker for Wallpeper Engine
-A dynamic wallpaper for Wallpaper Engine that displays the current price of Bitcoin and a 7-day price chart. The appearance can be customized to suit individual preferences.
+# Bitcoin Price Tracker for Wallpaper Engine
+A dynamic wallpaper for Wallpaper Engine that displays the current price of Bitcoin (USD) and a 7-day price chart. The appearance can be customized directly in the Wallpaper Engine properties panel.
 - [Project on Steam](https://steamcommunity.com/sharedfiles/filedetails/?id=2804470667)
 - [Project example](https://cv0x.github.io/Bitcoin-Real-Time-Price-Tracker/)
 
@@ -8,42 +8,48 @@ A dynamic wallpaper for Wallpaper Engine that displays the current price of Bitc
 
 ## Description
 
-This project creates a customizable wallpaper for the [Wallpaper Engine](https://store.steampowered.com/app/431960/Wallpaper_Engine/) program, displaying real-time Bitcoin (BTC) prices and a 7-day price chart. The design is a customizable, allowing users to adjust colors, fonts to create their own unique cryptocurrency wallpaper.
+This project creates a customizable wallpaper for the [Wallpaper Engine](https://store.steampowered.com/app/431960/Wallpaper_Engine/) program, displaying the real-time Bitcoin (BTC) price in USD and a 7-day price chart. Data is loaded from the [CoinGecko API](https://www.coingecko.com/en/api) every 60 seconds and the chart is drawn from its 7-day sparkline data.
 
 ## Usage
- 
+
 1. Log in to Steam in your browser.
-2. Subscribe to this [BITCOIN WALLPAPER](https://steamcommunity.com/sharedfiles/filedetails/?id=2804470667) .
-3. Open Wallpaper Engine and you can find it in the installed folder.
-6. After selection, this wallpaper will be set for you.
-7. Customize the wallpaper in the properties panel on the right side of Wallpaper Engine (changes apply instantly).
+2. Subscribe to this [BITCOIN WALLPAPER](https://steamcommunity.com/sharedfiles/filedetails/?id=2804470667).
+3. Open Wallpaper Engine and select the wallpaper in the Installed tab.
+4. Customize it in the properties panel on the right side of Wallpaper Engine (changes apply instantly).
 
 ## Customization Options
 
-![BTC price wallpaper](https://steamuserimages-a.akamaihd.net/ugc/2491131439830390144/35EEDFD2D4E85F7D0ACC45EB31FF66CDE4133626/?) 
-
 All options are defined in [project.json](project.json) as Wallpaper Engine user properties and are received in [app.js](app.js) via `window.wallpaperPropertyListener`.
 
-### Colors
-- Price color (custom or interactive)
-- Logo & card shadow (off, custom or interactive)
-- Logo, card and background gradient colors
+| Property | Options | Default |
+|---|---|---|
+| Font | Poppins, Roboto, Playfair, Poetsen, Cursive, Sans-serif, Monospace | Poetsen |
+| Price color | Custom color, Interactive (7d trend), Bitcoin color presets | Custom color (black) |
+| Logo & card shadow | Off, Custom color, Interactive (7d trend), Bitcoin color presets | Interactive |
+| Logo color | Any color | Black |
+| Card color | Any color | Gray |
+| Background color 1 / 2 | Any color (gradient) | Dark blue / dark red |
+| Show 7-day chart | On / Off | On |
+| Size | 50 – 250 % | 100 % |
+| Horizontal / vertical position | -45 – 45 % of the screen | 0 (center) |
 
-### Font family
-  - Poppins, Roboto, Playfair, Poetsen, Cursive, Sans-serif, Monospace
+### Bitcoin color presets
+Bitcoin Orange, Satoshi Gold, Golden Moon, Digital Silver, Lightning Purple, Laser Eyes Red, HODL Green, Blockchain Blue, Diamond Hands Cyan, Pizza Day Orange, Whitepaper White, Cold Wallet Black.
 
-### Layout
-- Show / hide 7-day chart
-- Size and position on screen
+### Interactive color
+Price color and shadow can follow the 7-day trend. They use the same color as the chart line: green when the price is higher than 7 days ago, red when it is lower.
 
-### Additional Features
-- Interactive Color
-- Interactive Shadow
-  - Interactive color by 7-day trend chart
-- BTC donate QR codes shown when hovering the heart icon in the top left corner
+## Easter Eggs
+- **To the moon** – a rocket replaces the logo when the price is between 99,000 $ and 110,000 $, and the golden moon appears between 100,000 $ and 110,000 $.
+- **Bitcoin Pizza Day** – on May 22 a pizza replaces the logo (it has priority over the rocket).
 
-![BTC price wallpaper](https://steamuserimages-a.akamaihd.net/ugc/23181678748243732/1F23FACBBF5EC62C806BAEE65BB61DF101D61D7C/?)
-    
+Easter eggs are re-checked with every price update, so they switch on and off while the wallpaper keeps running.
+
+![BTC to the moon](https://steamuserimages-a.akamaihd.net/ugc/23181678748243732/1F23FACBBF5EC62C806BAEE65BB61DF101D61D7C/?)
+
+## Support the creator
+Hover over the small heart in the top left corner to show the Lightning and on-chain BTC QR codes.
+
 ## License
 
 This project is open source and available under the MIT License. See the [LICENSE](LICENSE) file for details.
