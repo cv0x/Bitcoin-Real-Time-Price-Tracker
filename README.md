@@ -16,24 +16,31 @@ This project creates a customizable wallpaper for the [Wallpaper Engine](https:/
 2. Subscribe to this [BITCOIN WALLPAPER](https://steamcommunity.com/sharedfiles/filedetails/?id=2804470667) .
 3. Open Wallpaper Engine and you can find it in the installed folder.
 6. After selection, this wallpaper will be set for you.
-7. then you can click on the gear in the upper left corner and customize the wallpaper.
-8. Save your settings and enjoy your personalized Bitcoin wallpaper!
+7. Customize the wallpaper in the properties panel on the right side of Wallpaper Engine (changes apply instantly).
 
 ## Customization Options
 
 ![BTC price wallpaper](https://steamuserimages-a.akamaihd.net/ugc/2491131439830390144/35EEDFD2D4E85F7D0ACC45EB31FF66CDE4133626/?) 
 
+All options are defined in [project.json](project.json) as Wallpaper Engine user properties and are received in [app.js](app.js) via `window.wallpaperPropertyListener`.
+
 ### Colors
-- Text color for price display
-- Shadow effects
+- Price color (custom or interactive)
+- Logo & card shadow (off, custom or interactive)
+- Logo, card and background gradient colors
 
 ### Font family
-  - Poppins, Roboto, Playfair, Poetsen, Cursive, Sand-serif, Monospace
+  - Poppins, Roboto, Playfair, Poetsen, Cursive, Sans-serif, Monospace
+
+### Layout
+- Show / hide 7-day chart
+- Size and position on screen
 
 ### Additional Features
 - Interactive Color
 - Interactive Shadow
   - Interactive color by 7-day trend chart
+- BTC donate QR codes shown when hovering the heart icon in the top left corner
 
 ![BTC price wallpaper](https://steamuserimages-a.akamaihd.net/ugc/23181678748243732/1F23FACBBF5EC62C806BAEE65BB61DF101D61D7C/?)
     

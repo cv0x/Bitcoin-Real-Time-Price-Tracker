@@ -1,0 +1,163 @@
+{
+	"contentrating" : "Everyone",
+	"description" : "Real-time Bitcoin price with 7-day chart. Customize font, colors, shadow and size in the wallpaper properties.",
+	"file" : "index.html",
+	"general" :
+	{
+		"properties" :
+		{
+			"font" :
+			{
+				"order" : 0,
+				"text" : "Font",
+				"type" : "combo",
+				"value" : "Poetsen One",
+				"options" :
+				[
+					{ "label" : "Poppins", "value" : "Poppins" },
+					{ "label" : "Roboto", "value" : "Roboto" },
+					{ "label" : "Playfair", "value" : "Playfair Display" },
+					{ "label" : "Poetsen", "value" : "Poetsen One" },
+					{ "label" : "Cursive", "value" : "cursive" },
+					{ "label" : "Sans-serif", "value" : "sans-serif" },
+					{ "label" : "Monospace", "value" : "monospace" }
+				]
+			},
+			"pricecolormode" :
+			{
+				"order" : 1,
+				"text" : "Price color",
+				"type" : "combo",
+				"value" : "static",
+				"options" :
+				[
+					{ "label" : "Custom color", "value" : "static" },
+					{ "label" : "Interactive (7d trend)", "value" : "interactive" },
+					{ "label" : "Bitcoin Orange", "value" : "#f7931a" },
+					{ "label" : "Satoshi Gold", "value" : "#ffd700" },
+					{ "label" : "Golden Moon", "value" : "#ffcf5c" },
+					{ "label" : "Digital Silver", "value" : "#c0c0c0" },
+					{ "label" : "Lightning Purple", "value" : "#7b3fe4" },
+					{ "label" : "Laser Eyes Red", "value" : "#ff1e1e" },
+					{ "label" : "HODL Green", "value" : "#00c853" },
+					{ "label" : "Blockchain Blue", "value" : "#1e90ff" },
+					{ "label" : "Diamond Hands Cyan", "value" : "#00e5ff" },
+					{ "label" : "Pizza Day Orange", "value" : "#ff6b35" },
+					{ "label" : "Whitepaper White", "value" : "#ffffff" },
+					{ "label" : "Cold Wallet Black", "value" : "#000000" }
+				]
+			},
+			"pricecolor" :
+			{
+				"order" : 2,
+				"text" : "Custom price color",
+				"type" : "color",
+				"value" : "0 0 0",
+				"condition" : "pricecolormode.value == 'static'"
+			},
+			"shadowmode" :
+			{
+				"order" : 3,
+				"text" : "Logo & card shadow",
+				"type" : "combo",
+				"value" : "interactive",
+				"options" :
+				[
+					{ "label" : "Off", "value" : "off" },
+					{ "label" : "Custom color", "value" : "color" },
+					{ "label" : "Interactive (7d trend)", "value" : "interactive" },
+					{ "label" : "Bitcoin Orange", "value" : "#f7931a" },
+					{ "label" : "Satoshi Gold", "value" : "#ffd700" },
+					{ "label" : "Golden Moon", "value" : "#ffcf5c" },
+					{ "label" : "Digital Silver", "value" : "#c0c0c0" },
+					{ "label" : "Lightning Purple", "value" : "#7b3fe4" },
+					{ "label" : "Laser Eyes Red", "value" : "#ff1e1e" },
+					{ "label" : "HODL Green", "value" : "#00c853" },
+					{ "label" : "Blockchain Blue", "value" : "#1e90ff" },
+					{ "label" : "Diamond Hands Cyan", "value" : "#00e5ff" },
+					{ "label" : "Pizza Day Orange", "value" : "#ff6b35" },
+					{ "label" : "Whitepaper White", "value" : "#ffffff" },
+					{ "label" : "Cold Wallet Black", "value" : "#000000" }
+				]
+			},
+			"shadowcolor" :
+			{
+				"order" : 4,
+				"text" : "Custom shadow color",
+				"type" : "color",
+				"value" : "0.50196 0.50196 0.50196",
+				"condition" : "shadowmode.value == 'color'"
+			},
+			"logocolor" :
+			{
+				"order" : 5,
+				"text" : "Logo color",
+				"type" : "color",
+				"value" : "0 0 0"
+			},
+			"cardcolor" :
+			{
+				"order" : 6,
+				"text" : "Card color",
+				"type" : "color",
+				"value" : "0.4 0.38431 0.38431"
+			},
+			"backgroundcolor1" :
+			{
+				"order" : 7,
+				"text" : "Background color 1",
+				"type" : "color",
+				"value" : "0.01176 0.02745 0.11765"
+			},
+			"backgroundcolor2" :
+			{
+				"order" : 8,
+				"text" : "Background color 2",
+				"type" : "color",
+				"value" : "0.21569 0.02353 0.09020"
+			},
+			"showchart" :
+			{
+				"order" : 10,
+				"text" : "Show 7-day chart",
+				"type" : "bool",
+				"value" : true
+			},
+			"scale" :
+			{
+				"order" : 11,
+				"text" : "Size (%)",
+				"type" : "slider",
+				"min" : 50,
+				"max" : 250,
+				"value" : 100,
+				"editable" : true
+			},
+			"offsetx" :
+			{
+				"order" : 12,
+				"text" : "Horizontal position",
+				"type" : "slider",
+				"min" : -45,
+				"max" : 45,
+				"value" : 0,
+				"editable" : true
+			},
+			"offsety" :
+			{
+				"order" : 13,
+				"text" : "Vertical position",
+				"type" : "slider",
+				"min" : -45,
+				"max" : 45,
+				"value" : 0,
+				"editable" : true
+			}
+		}
+	},
+	"preview" : "preview.jpg",
+	"title" : "Bitcoin Real-Time Price Tracker",
+	"type" : "web",
+	"visibility" : "public",
+	"workshopid" : "2804470667"
+}

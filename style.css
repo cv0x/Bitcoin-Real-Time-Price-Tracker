@@ -9,6 +9,11 @@
   --text-color: #ffffff;
   --btc-color: #000001;
   --btc-background-highlight: #ffd700;
+  --bg-color-1: #03071e;
+  --bg-color-2: #370617;
+  --scale: 1;
+  --offset-x: 0vw;
+  --offset-y: 0vh;
 }
 * {
   margin: 0;
@@ -22,7 +27,11 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(45deg, #03071e, #370617);
+  overflow: hidden;
+  background: linear-gradient(45deg, var(--bg-color-1), var(--bg-color-2));
+}
+.stage {
+  transform: translate(var(--offset-x), var(--offset-y)) scale(var(--scale));
 }
 .card {
   position: relative;
@@ -42,6 +51,7 @@ body {
   transform: translateX(-50%);
   border: 0;
   border-radius: 10px;
+  white-space: nowrap;
 }
 #btc-logo {
   position: absolute;
@@ -116,91 +126,40 @@ body {
   position: absolute;
   text-shadow: 0px 10px 20px rgba(102, 98, 98, 1);
 }
-#menu-icon {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  font-size: 30px;
-  height: 40px;
-  width: 40px;
-  color: rgba(255, 255, 255, 0.274);
-  display: block;
-}
-#menu-icon:hover {
-  color: rgb(255, 255, 255);
-}
-.menu {
-  position: absolute;
-  top: 20px;
+.donate {
+  position: fixed;
+  top: 10px;
   left: 10px;
-  width: 20%;
-  margin-top: 20px;
-  margin-left: 10px;
-  padding: 5px 1%;
+  z-index: 10;
+}
+#donate-icon {
+  font-size: 26px;
+  color: rgba(255, 255, 255, 0.274);
+  transition: color 0.2s;
+}
+.donate:hover #donate-icon {
+  color: #ff4d6d;
+}
+.donate-box {
+  display: none;
+  margin-top: 5px;
+  padding: 10px;
+  width: 320px;
   border-radius: 1rem;
+  text-align: center;
   color: var(--text-color);
   background: var(--main-color);
   box-shadow: 0 0 10px black;
-  display: none;
 }
-.menu.active {
+.donate:hover .donate-box {
   display: block;
 }
-.menu h2 {
-  font-size: 25px;
+.donate-box h3 {
+  margin-bottom: 8px;
+  font-size: 18px;
 }
-.menu h3 {
-  text-align: center;
-  margin-top: 50px;
-  font-size: 15px;
-}
-.menu label {
-  display: block;
-  margin-top: 10px;
-  font-size: 12px;
-}
-.menu select {
-  overflow: hidden;
+.donate-box img {
   width: 100%;
-  height: auto;
-  font-size: 15px;
-  margin-top: 2px;
-}
-.menu p {
-  position: absolute;
-  padding-top: 15px;
-  text-align: center;
-  bottom: 2px;
-  right: 0px;
-  font-size: 12px;
-  height: 30px;
-  width: 150px;
-  color: var(--text-color);
-  display: inline;
-}
-.menu p a {
-  color: var(--text-color);
-}
-#save {
-  position: absolute;
-  top: 10px;
-  right: 5px;
-  font-size: 40px;
-  height: 45px;
-  width: 45px;
-  color: var(--text-color);
   display: block;
-}
-#save:hover {
-  color: rgba(255, 255, 255, 0.637);
-}
-.supportMe {
-  position: relative;
-  display: block;
-  margin-top: 5px;
-  height: 200px;
-  background-image: url(https://raw.githubusercontent.com/cv0x/Bitcoin-Real-Time-Price-Tracker/main/btcsupport.png);
-  background-repeat: no-repeat;
-  background-size: contain;
 }
 /*  colors 03071e 370617 6a040f 9d0208 d00000 e85d04 f48c06 faa307*/
