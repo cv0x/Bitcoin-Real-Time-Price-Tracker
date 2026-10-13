@@ -55,13 +55,11 @@ Price color and shadow can follow the 7-day trend. They use the same color as th
 
 ## Easter Eggs
 - **To the moon** – a rocket replaces the logo when the price is between 99,000 $ and 110,000 $, and the golden moon appears between 100,000 $ and 110,000 $.
-- **Bitcoin Pizza Day** – on May 22 a pizza replaces the logo (it has priority over the rocket).
+- ...and maybe a few more hidden surprises. 🤫
 
 Easter eggs are re-checked with every price update, so they switch on and off while the wallpaper keeps running.
 
-| To the moon | Bitcoin Pizza Day |
-|---|---|
-| ![To the moon easter egg](screenshots/06-to-the-moon.png) | ![Bitcoin Pizza Day easter egg](screenshots/07-pizza-day.png) |
+![To the moon easter egg](screenshots/06-to-the-moon.png)
 
 ## Support the creator
 Hover over the small heart in the top left corner to show the Lightning and on-chain BTC QR codes.
