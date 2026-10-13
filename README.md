@@ -3,7 +3,11 @@ A dynamic wallpaper for Wallpaper Engine that displays the current price of Bitc
 - [Project on Steam](https://steamcommunity.com/sharedfiles/filedetails/?id=2804470667)
 - [Project example](https://cv0x.github.io/Bitcoin-Real-Time-Price-Tracker/)
 
-![BTC price wallpaper](https://steamuserimages-a.akamaihd.net/ugc/2491131439830385449/7AC6A9F6F2C54BC23D5D90FF8A2635811A98D508/?)
+<p align="center">
+  <img src="screenshots/preview.gif" alt="Animated preview of the BTC price wallpaper" width="400">
+</p>
+
+![BTC price wallpaper – default look](screenshots/01-default.png)
 
 
 ## Description
@@ -33,11 +37,21 @@ All options are defined in [project.json](project.json) as Wallpaper Engine user
 | Size | 50 – 250 % | 100 % |
 | Horizontal / vertical position | -45 – 45 % of the screen | 0 (center) |
 
+| Bitcoin Orange | Lightning Purple |
+|---|---|
+| ![Bitcoin Orange theme](screenshots/03-bitcoin-orange.png) | ![Lightning Purple theme](screenshots/04-lightning-purple.png) |
+| **Diamond Hands** | **Size 200 % moved to the right** |
+| ![Diamond Hands theme](screenshots/05-diamond-hands.png) | ![Bigger wallpaper moved to the right side](screenshots/08-big-right-side.png) |
+
 ### Bitcoin color presets
 Bitcoin Orange, Satoshi Gold, Golden Moon, Digital Silver, Lightning Purple, Laser Eyes Red, HODL Green, Blockchain Blue, Diamond Hands Cyan, Pizza Day Orange, Whitepaper White, Cold Wallet Black.
 
 ### Interactive color
 Price color and shadow can follow the 7-day trend. They use the same color as the chart line: green when the price is higher than 7 days ago, red when it is lower.
+
+| Downtrend | Uptrend |
+|---|---|
+| ![Interactive colors in a downtrend](screenshots/01-default.png) | ![Interactive colors in an uptrend](screenshots/02-interactive-uptrend.png) |
 
 ## Easter Eggs
 - **To the moon** – a rocket replaces the logo when the price is between 99,000 $ and 110,000 $, and the golden moon appears between 100,000 $ and 110,000 $.
@@ -45,10 +59,14 @@ Price color and shadow can follow the 7-day trend. They use the same color as th
 
 Easter eggs are re-checked with every price update, so they switch on and off while the wallpaper keeps running.
 
-![BTC to the moon](https://steamuserimages-a.akamaihd.net/ugc/23181678748243732/1F23FACBBF5EC62C806BAEE65BB61DF101D61D7C/?)
+| To the moon | Bitcoin Pizza Day |
+|---|---|
+| ![To the moon easter egg](screenshots/06-to-the-moon.png) | ![Bitcoin Pizza Day easter egg](screenshots/07-pizza-day.png) |
 
 ## Support the creator
 Hover over the small heart in the top left corner to show the Lightning and on-chain BTC QR codes.
+
+![Support the creator QR codes](screenshots/09-support-the-creator.png)
 
 ## License
 
