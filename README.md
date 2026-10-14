@@ -4,7 +4,7 @@ A dynamic wallpaper for Wallpaper Engine that displays the current price of Bitc
 - [Project example](https://cv0x.github.io/Bitcoin-Real-Time-Price-Tracker/)
 
 <p align="center">
-  <img src="screenshots/preview.gif" alt="Animated preview of the BTC price wallpaper" width="400">
+  <img src="screenshots/preview.gif" alt="Animated preview of the BTC price wallpaper" width="256">
 </p>
 
 ![BTC price wallpaper – default look](screenshots/01-default.png)
@@ -32,7 +32,8 @@ All options are defined in [project.json](project.json) as Wallpaper Engine user
 | Logo & card shadow | Off, Custom color, Interactive (7d trend), Bitcoin color presets | Interactive |
 | Logo color | Any color | Black |
 | Card color | Any color | Gray |
-| Background color 1 / 2 | Any color (gradient) | Dark blue / dark red |
+| Background | Two-color gradient presets or Custom colors | Classic Night |
+| Background color 1 / 2 | Any color (shown with Custom colors) | Dark blue / dark red |
 | Show 7-day chart | On / Off | On |
 | Size | 50 – 250 % | 100 % |
 | Horizontal / vertical position | -45 – 45 % of the screen | 0 (center) |
@@ -45,6 +46,9 @@ All options are defined in [project.json](project.json) as Wallpaper Engine user
 
 ### Bitcoin color presets
 Bitcoin Orange, Satoshi Gold, Golden Moon, Digital Silver, Lightning Purple, Laser Eyes Red, HODL Green, Blockchain Blue, Diamond Hands Cyan, Pizza Day Orange, Whitepaper White, Cold Wallet Black.
+
+### Background presets
+Classic Night, Bitcoin Ember, Satoshi Gold, Lightning Storm, Deep Ocean, HODL Forest, Laser Eyes, Moonlight, Sunset Pump, Cold Storage, Pure Black – or pick any two colors with Custom colors.
 
 ### Interactive color
 Price color and shadow can follow the 7-day trend. They use the same color as the chart line: green when the price is higher than 7 days ago, red when it is lower.

@@ -17,6 +17,7 @@ const settings = {
   shadowColor: "#808080",
   logoColor: "#000001",
   cardColor: "#666262",
+  backgroundPreset: "#03071e,#370617", // "color1,color2" | custom
   backgroundColor1: "#03071e",
   backgroundColor2: "#370617",
   showChart: true,
@@ -49,8 +50,13 @@ function applySettings() {
   document.body.style.fontFamily = settings.font;
   root.style.setProperty("--main-color", settings.cardColor);
   root.style.setProperty("--btc-color", settings.logoColor);
-  root.style.setProperty("--bg-color-1", settings.backgroundColor1);
-  root.style.setProperty("--bg-color-2", settings.backgroundColor2);
+  // Background gradient from preset ("color1,color2") or custom colors
+  const [bg1, bg2] =
+    settings.backgroundPreset === "custom"
+      ? [settings.backgroundColor1, settings.backgroundColor2]
+      : settings.backgroundPreset.split(",");
+  root.style.setProperty("--bg-color-1", bg1);
+  root.style.setProperty("--bg-color-2", bg2);
   root.style.setProperty("--scale", settings.scale / 100);
   root.style.setProperty("--offset-x", `${settings.offsetX}vw`);
   root.style.setProperty("--offset-y", `${settings.offsetY}vh`);
@@ -102,6 +108,8 @@ window.wallpaperPropertyListener = {
       settings.logoColor = weColorToCss(properties.logocolor.value);
     if (properties.cardcolor)
       settings.cardColor = weColorToCss(properties.cardcolor.value);
+    if (properties.backgroundpreset)
+      settings.backgroundPreset = properties.backgroundpreset.value;
     if (properties.backgroundcolor1)
       settings.backgroundColor1 = weColorToCss(properties.backgroundcolor1.value);
     if (properties.backgroundcolor2)

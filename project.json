@@ -198,17 +198,75 @@
 				"type": "color",
 				"value": "0.4 0.38431 0.38431"
 			},
-			"backgroundcolor1": {
+			"backgroundpreset": {
 				"order": 7,
+				"text": "Background",
+				"type": "combo",
+				"value": "#03071e,#370617",
+				"options": [
+					{
+						"label": "Classic Night",
+						"value": "#03071e,#370617"
+					},
+					{
+						"label": "Bitcoin Ember",
+						"value": "#000000,#3a1f00"
+					},
+					{
+						"label": "Satoshi Gold",
+						"value": "#1a1200,#4d3800"
+					},
+					{
+						"label": "Lightning Storm",
+						"value": "#0b0420,#2a0a4a"
+					},
+					{
+						"label": "Deep Ocean",
+						"value": "#00121a,#003344"
+					},
+					{
+						"label": "HODL Forest",
+						"value": "#001a0d,#003d1f"
+					},
+					{
+						"label": "Laser Eyes",
+						"value": "#1a0000,#4d0000"
+					},
+					{
+						"label": "Moonlight",
+						"value": "#0f0f1a,#2b2b40"
+					},
+					{
+						"label": "Sunset Pump",
+						"value": "#2d0a1f,#5c2a00"
+					},
+					{
+						"label": "Cold Storage",
+						"value": "#0d1117,#30363d"
+					},
+					{
+						"label": "Pure Black",
+						"value": "#000000,#000000"
+					},
+					{
+						"label": "Custom colors",
+						"value": "custom"
+					}
+				]
+			},
+			"backgroundcolor1": {
+				"order": 8,
 				"text": "Background color 1",
 				"type": "color",
-				"value": "0.01176 0.02745 0.11765"
+				"value": "0.01176 0.02745 0.11765",
+				"condition": "backgroundpreset.value == 'custom'"
 			},
 			"backgroundcolor2": {
-				"order": 8,
+				"order": 9,
 				"text": "Background color 2",
 				"type": "color",
-				"value": "0.21569 0.02353 0.09020"
+				"value": "0.21569 0.02353 0.09020",
+				"condition": "backgroundpreset.value == 'custom'"
 			},
 			"showchart": {
 				"order": 10,
